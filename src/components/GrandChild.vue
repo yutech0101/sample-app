@@ -1,19 +1,19 @@
 <template>
   <div class="grand-child">
-    <p>孫コンポーネント</p>
-    <grand-child2 :value="ownerFirstName" @input="inputFirstName"/>
-    <grand-child2 :value="ownerLastName" @input="inputLastName"/>
+    <p>孫コンポ</p>
+    <text-box :value="ownerFirstName" @input="inputFirstName"/>
+    <text-box :value="ownerLastName" @input="inputLastName"/>
   </div>
 </template>
 
 <script>
-import GrandChild2 from '@/components/GrandChild2.vue'
+import TextBox from '@/components/TextBox.vue'
 
 export default {
   name: 'GrandChild',
 
   components: {
-    'grand-child2': GrandChild2
+    'text-box': TextBox
   },
 
   props: {
