@@ -2,7 +2,11 @@
   <div id="app">
     <p>親コンポーネント</p>
     {{ owner }}
-    <child-child :value="owner" @input="inputText4"/>
+    <child-child
+      :value="owner"
+      @input-first-name="inputFirstName"
+      @input-last-name="inputLastName"
+    />
   </div>
 </template>
 
@@ -18,13 +22,21 @@ export default {
 
   data() {
     return {
-      owner: '親から送ったownerデータの値'
+      owner: {
+        firstName: '',
+        lastName: '',
+        firstNameKana: '',
+        lastNameKana: ''
+      }
     }
   },
 
   methods: {
-    inputText4(e) {
-      this.owner = e
+    inputFirstName(e) {
+      this.owner.firstName = e
+    },
+    inputLastName(e) {
+      this.owner.lastName = e
     }
   }
 }

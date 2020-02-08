@@ -1,8 +1,11 @@
 <template>
   <div class="child">
     <p>子コンポーネント</p>
-    {{ value }}
-    <grand-child :value="value" @input="inputText3"/>
+    <grand-child 
+      :value="ownerFullName"
+      @input-first-name="inputFirstName"
+      @input-last-name="inputLastName"
+    />
   </div>
 </template>
 
@@ -18,13 +21,25 @@ export default {
 
   props: {
     value: {
-      type: String
+      type: Object
+    }
+  },
+
+  data() {
+    return {
+      ownerFullName: {
+        firstName: this.value.firstName,
+        lastName: this.value.lastName
+      }
     }
   },
 
   methods: {
-    inputText3(e) {
-      this.$emit('input', e)
+    inputFirstName(e) {
+      this.$emit('input-first-name', e)
+    },
+    inputLastName(e) {
+      this.$emit('input-last-name', e)
     }
   }
 }

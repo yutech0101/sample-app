@@ -1,8 +1,7 @@
 <template>
   <div class="grand-child2">
     <p>ひ孫コンポーネント</p>
-    {{ value }}
-    <input type="text" :value="value" @input="inputText">
+    <input type="text" :value="value.value" @input="inputText" :placeholder="value.placeholder">
   </div>
 </template>
 
@@ -13,7 +12,7 @@ export default {
 
   props: {
     value: {
-      type: String
+      type: Object
     }
   },
 
@@ -27,8 +26,8 @@ export default {
 
 <style scoped>
 .grand-child2 {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 70px;
   background-color: rgb(236, 220, 126);
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="grand-child">
     <p>孫コンポーネント</p>
-    {{ value }}
-    <grand-child2 :value="value" @input="inputText2"/>
+    <grand-child2 :value="ownerFirstName" @input="inputFirstName"/>
+    <grand-child2 :value="ownerLastName" @input="inputLastName"/>
   </div>
 </template>
 
@@ -18,13 +18,29 @@ export default {
 
   props: {
     value: {
-      type: String
+      type: Object
+    }
+  },
+
+  data() {
+    return {
+      ownerFirstName: {
+        value: this.value.firstName,
+        placeholder: '裕登'
+      },
+      ownerLastName: {
+        value: this.value.lastName,
+        placeholder: '荒木'
+      }
     }
   },
 
   methods: {
-    inputText2(e) {
-      this.$emit('input', e)
+    inputFirstName(e) {
+      this.$emit('input-first-name', e)
+    },
+    inputLastName(e) {
+      this.$emit('input-last-name', e)
     }
   }
 }
@@ -33,7 +49,7 @@ export default {
 <style scoped>
 .grand-child {
   width: 400px;
-  height: 400px;
+  height: 200px;
   background-color: rgb(0, 225, 255);
 }
 </style>
