@@ -1,7 +1,8 @@
 <template>
   <div class="grand-child2">
     <p>ひ孫コンポーネント</p>
-    <input type="text" @input="inputText" :value="value" :placeholder="placeholder">
+    {{ value }}
+    <input type="text" :value="value" @input="inputText">
   </div>
 </template>
 
@@ -11,9 +12,6 @@ export default {
   name: 'GrandChild2',
 
   props: {
-    placeholder: {
-      type: String
-    },
     value: {
       type: String
     }
@@ -21,7 +19,7 @@ export default {
 
   methods: {
     inputText(e) {
-      this.$emit('my-input', e.target.value)
+      this.$emit('input', e.target.value)
     }
   }
 }

@@ -2,7 +2,7 @@
   <div id="app">
     <p>親コンポーネント</p>
     {{ owner }}
-    <child-child :my-input3="inputText4"/>
+    <child-child />
   </div>
 </template>
 
@@ -18,10 +18,7 @@ export default {
 
   data() {
     return {
-      owner: {
-        lastName: '',
-        firstName: ''
-      }
+      owner: ''
     }
   }
 }

@@ -1,7 +1,8 @@
 <template>
   <div class="child">
     <p>子コンポーネント</p>
-    <grand-child />
+    {{ owner }}
+    <grand-child :value="owner" @input="owner = $event"/>
   </div>
 </template>
 
@@ -13,6 +14,12 @@ export default {
 
   components: {
     'grand-child': GrandChild
+  },
+
+  data() {
+    return {
+      owner: '子から送ったownerの値'
+    }
   }
 }
 </script>

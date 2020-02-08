@@ -1,7 +1,8 @@
 <template>
   <div class="grand-child">
     <p>孫コンポーネント</p>
-    <grand-child2 />
+    {{ value }}
+    <grand-child2 :value="value" @input="inputText2"/>
   </div>
 </template>
 
@@ -13,6 +14,18 @@ export default {
 
   components: {
     'grand-child2': GrandChild2
+  },
+
+  props: {
+    value: {
+      type: String
+    }
+  },
+
+  methods: {
+    inputText2(e) {
+      this.$emit('input', e)
+    }
   }
 }
 </script>
