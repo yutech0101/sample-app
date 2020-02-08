@@ -2,7 +2,7 @@
   <div id="app">
     <p>親コンポーネント</p>
     {{ owner }}
-    <child-child />
+    <child-child :value="owner" @input="inputText4"/>
   </div>
 </template>
 
@@ -18,7 +18,13 @@ export default {
 
   data() {
     return {
-      owner: ''
+      owner: '親から送ったownerデータの値'
+    }
+  },
+
+  methods: {
+    inputText4(e) {
+      this.owner = e
     }
   }
 }

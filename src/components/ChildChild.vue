@@ -1,8 +1,8 @@
 <template>
   <div class="child">
     <p>子コンポーネント</p>
-    {{ owner }}
-    <grand-child :value="owner" @input="owner = $event"/>
+    {{ value }}
+    <grand-child :value="value" @input="inputText3"/>
   </div>
 </template>
 
@@ -16,9 +16,15 @@ export default {
     'grand-child': GrandChild
   },
 
-  data() {
-    return {
-      owner: '子から送ったownerの値'
+  props: {
+    value: {
+      type: String
+    }
+  },
+
+  methods: {
+    inputText3(e) {
+      this.$emit('input', e)
     }
   }
 }
